@@ -7,15 +7,25 @@ namespace Bazga
 {
   static class Program
   {
-    /// <summary>
-    /// The main entry point for the application.
-    /// </summary>
+    public static readonly string SettingsPath = string.Format("{0}\\Bazga\\Settings.ini", Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData));
+    public static bool DesignTime = true;
+    public static bool Exitting = false;
+
+    #region Main
     [STAThread]
     static void Main()
     {
+      DesignTime = false;
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new Form1());
+      Application.Run(new frmBazga());
+    }
+    #endregion Main
+
+    public static void ExitProperly()
+    {
+      Exitting = true;
+      Application.Exit();
     }
   }
 }

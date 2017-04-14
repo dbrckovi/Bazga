@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace Bazga
 {
-  public partial class Form1 : Form
+  public partial class frmSettings : Form
   {
-    public Form1()
+    public frmSettings()
     {
       InitializeComponent();
+    }
+
+    private void frmSettings_Load(object sender, EventArgs e)
+    {
+        this.Icon = Properties.Resources.BazgaGreen;
     }
   }
 }

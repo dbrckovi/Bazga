@@ -228,5 +228,15 @@ namespace Bazga
         MsgBox.Show(ex);
       }
     }
+
+    private void ctlPerson6_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ctlPerson7_Load(object sender, EventArgs e)
+    {
+
+    }
   }
 }

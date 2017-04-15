@@ -7,9 +7,8 @@ namespace Bazga
 {
   public class Transaction
   {
-    public int PersonID;
     public DateTime Date;
-    public int Change;
+    public int Amount;
     public int OldBalance;
     public int NewBalance;
     public string Description;

@@ -58,12 +58,25 @@
     <Compile Include="ctlPersonDetails.Designer.cs">
       <DependentUpon>ctlPersonDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="ctlPersonList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ctlPersonList.Designer.cs">
+      <DependentUpon>ctlPersonList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="Delegates.cs" />
     <Compile Include="frmBazga.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBazga.Designer.cs">
       <DependentUpon>frmBazga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditPerson.Designer.cs">
+      <DependentUpon>frmEditPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSettings.cs">
       <SubType>Form</SubType>
@@ -83,8 +96,14 @@
     <EmbeddedResource Include="ctlPersonDetails.resx">
       <DependentUpon>ctlPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ctlPersonList.resx">
+      <DependentUpon>ctlPersonList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBazga.resx">
       <DependentUpon>frmBazga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditPerson.resx">
+      <DependentUpon>frmEditPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
@@ -135,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Edit_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DanasJeo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

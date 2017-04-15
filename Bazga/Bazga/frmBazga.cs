@@ -12,16 +12,49 @@ namespace Bazga
 {
   public partial class frmBazga : Form
   {
+    private readonly Color NOT_SAVED_COLOR = Color.FromArgb(255, 192, 192);
+
     private Database _currentDatabase = null;
     private Database CurrentDatabase
     {
       get { return _currentDatabase; }
       set
       {
+        if (value == _currentDatabase) return;
+
+        if (_currentDatabase != null)
+        {
+          _currentDatabase.DataChanged -= _currentDatabase_DataChanged;
+          _currentDatabase.PersonAdded -= _currentDatabase_PersonAdded;
+          _currentDatabase.PersonChanged -= _currentDatabase_PersonChanged;
+        }
+
         mnuSaveDatabase.Enabled = mnuSaveDatabaseAs.Enabled = pnlDatabase.Enabled = value != null;
         _currentDatabase = value;
+        ctlPersonDetails1.Database = _currentDatabase;
+        ctlPersonList1.Database = _currentDatabase;
         LoadGUI();
+
+        _currentDatabase.DataChanged += _currentDatabase_DataChanged;
+        _currentDatabase.PersonAdded += _currentDatabase_PersonAdded;
+        _currentDatabase.PersonChanged += _currentDatabase_PersonChanged;
       }
+    }
+
+    private void _currentDatabase_PersonChanged(int value)
+    {
+      ctlPersonList1.RefreshList();
+      if (ctlPersonDetails1.PersonID.HasValue && ctlPersonDetails1.PersonID.Value == value) ctlPersonDetails1.ReloadGUI();
+    }
+
+    private void _currentDatabase_PersonAdded(int value)
+    {
+      ctlPersonList1.RefreshList();
+    }
+
+    private void _currentDatabase_DataChanged()
+    {
+      LoadGUI();
     }
 
     public frmBazga()
@@ -89,6 +122,7 @@ namespace Bazga
     private void LoadGUI()
     {
       lblDatabasePath.Text = CurrentDatabase != null && !string.IsNullOrEmpty(CurrentDatabase.Path) ? CurrentDatabase.Path : "";
+      lblNotSaved.Visible = CurrentDatabase != null && CurrentDatabase.Changed;
     }
 
     private string GetDatabaseInitialDirectory()
@@ -222,6 +256,55 @@ namespace Bazga
       {
         SaveDatabaseAs();
         LoadGUI();
+      }
+      catch (Exception ex)
+      {
+        MsgBox.Show(ex);
+      }
+    }
+
+    private void btnNewPerson_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        frmEditPerson personEditor = new frmEditPerson();
+        personEditor.Database = CurrentDatabase;
+        personEditor.ShowDialog(this);
+      }
+      catch (Exception ex)
+      {
+        MsgBox.Show(ex);
+      }
+    }
+
+    private void btnEditPerson_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        if (!ctlPersonList1.SelectedPersonID.HasValue) throw new Exception("Nothing selected");
+        
+        frmEditPerson personEditor = new frmEditPerson();
+        personEditor.Database = CurrentDatabase;
+        personEditor.ID = ctlPersonList1.SelectedPersonID;
+        personEditor.ShowDialog(this);
+      }
+      catch (Exception ex)
+      {
+        MsgBox.Show(ex);
+      }
+    }
+
+    private void ctlPersonList1_SelectionChanged()
+    {
+      btnEditPerson.Enabled = ctlPersonList1.SelectedPersonID.HasValue;
+      ctlPersonDetails1.PersonID = ctlPersonList1.SelectedPersonID;
+    }
+
+    private void btnSave_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        SaveDatabase();
       }
       catch (Exception ex)
       {

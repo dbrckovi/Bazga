@@ -103,6 +103,16 @@ namespace Bazga.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DanasJeo {
+            get {
+                object obj = ResourceManager.GetObject("DanasJeo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Delete_Image {
             get {
                 object obj = ResourceManager.GetObject("Delete_Image", resourceCulture);

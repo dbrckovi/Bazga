@@ -118,6 +118,24 @@
   <ItemGroup>
     <None Include="Resources\BazgaYellow.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_Image.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

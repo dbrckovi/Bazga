@@ -43,12 +43,12 @@
       this.mnuSaveDatabaseAs = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuSettings = new System.Windows.Forms.ToolStripMenuItem();
       this.pnlDatabase = new System.Windows.Forms.Panel();
+      this.grpMan = new System.Windows.Forms.GroupBox();
+      this.grpLinks = new System.Windows.Forms.GroupBox();
       this.lblDatabasePath = new System.Windows.Forms.Label();
       this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
       this.trayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.mnuExitTray = new System.Windows.Forms.ToolStripMenuItem();
-      this.grpMan = new System.Windows.Forms.GroupBox();
-      this.grpLinks = new System.Windows.Forms.GroupBox();
       this.ctlPersonDetails1 = new Bazga.ctlPersonDetails();
       this.ctlPerson12 = new Bazga.ctlPerson();
       this.ctlPerson11 = new Bazga.ctlPerson();
@@ -67,8 +67,8 @@
       this.panel1.SuspendLayout();
       this.menuStrip1.SuspendLayout();
       this.pnlDatabase.SuspendLayout();
-      this.trayMenuStrip.SuspendLayout();
       this.grpMan.SuspendLayout();
+      this.trayMenuStrip.SuspendLayout();
       this.SuspendLayout();
       // 
       // grpPeople
@@ -100,9 +100,9 @@
       this.pnlPersons.Controls.Add(this.ctlPerson2);
       this.pnlPersons.Controls.Add(this.ctlPerson1);
       this.pnlPersons.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pnlPersons.Location = new System.Drawing.Point(3, 48);
+      this.pnlPersons.Location = new System.Drawing.Point(3, 44);
       this.pnlPersons.Name = "pnlPersons";
-      this.pnlPersons.Size = new System.Drawing.Size(426, 469);
+      this.pnlPersons.Size = new System.Drawing.Size(426, 473);
       this.pnlPersons.TabIndex = 1;
       // 
       // panel1
@@ -113,27 +113,29 @@
       this.panel1.Location = new System.Drawing.Point(3, 16);
       this.panel1.Name = "panel1";
       this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 4);
-      this.panel1.Size = new System.Drawing.Size(426, 32);
+      this.panel1.Size = new System.Drawing.Size(426, 28);
       this.panel1.TabIndex = 0;
       // 
       // btnEditPerson
       // 
       this.btnEditPerson.Dock = System.Windows.Forms.DockStyle.Left;
-      this.btnEditPerson.Location = new System.Drawing.Point(40, 0);
+      this.btnEditPerson.Enabled = false;
+      this.btnEditPerson.Image = global::Bazga.Properties.Resources.Edit_Image;
+      this.btnEditPerson.Location = new System.Drawing.Point(24, 0);
       this.btnEditPerson.Name = "btnEditPerson";
-      this.btnEditPerson.Size = new System.Drawing.Size(40, 28);
+      this.btnEditPerson.Size = new System.Drawing.Size(24, 24);
       this.btnEditPerson.TabIndex = 1;
-      this.btnEditPerson.Text = "Edit";
       this.btnEditPerson.UseVisualStyleBackColor = true;
       // 
       // btnNewPerson
       // 
       this.btnNewPerson.Dock = System.Windows.Forms.DockStyle.Left;
+      this.btnNewPerson.Enabled = false;
+      this.btnNewPerson.Image = global::Bazga.Properties.Resources.Add_Image;
       this.btnNewPerson.Location = new System.Drawing.Point(0, 0);
       this.btnNewPerson.Name = "btnNewPerson";
-      this.btnNewPerson.Size = new System.Drawing.Size(40, 28);
+      this.btnNewPerson.Size = new System.Drawing.Size(24, 24);
       this.btnNewPerson.TabIndex = 0;
-      this.btnNewPerson.Text = "New";
       this.btnNewPerson.UseVisualStyleBackColor = true;
       // 
       // menuStrip1
@@ -161,6 +163,7 @@
       // 
       // mnuNewDatabase
       // 
+      this.mnuNewDatabase.Image = global::Bazga.Properties.Resources.New_Image;
       this.mnuNewDatabase.Name = "mnuNewDatabase";
       this.mnuNewDatabase.Size = new System.Drawing.Size(142, 22);
       this.mnuNewDatabase.Text = "Nova";
@@ -168,6 +171,7 @@
       // 
       // mnuOpenDatabase
       // 
+      this.mnuOpenDatabase.Image = global::Bazga.Properties.Resources.Open_Image;
       this.mnuOpenDatabase.Name = "mnuOpenDatabase";
       this.mnuOpenDatabase.Size = new System.Drawing.Size(142, 22);
       this.mnuOpenDatabase.Text = "Otvori";
@@ -181,6 +185,7 @@
       // mnuSaveDatabase
       // 
       this.mnuSaveDatabase.Enabled = false;
+      this.mnuSaveDatabase.Image = global::Bazga.Properties.Resources.Save_Image;
       this.mnuSaveDatabase.Name = "mnuSaveDatabase";
       this.mnuSaveDatabase.Size = new System.Drawing.Size(142, 22);
       this.mnuSaveDatabase.Text = "Spremi";
@@ -189,6 +194,7 @@
       // mnuSaveDatabaseAs
       // 
       this.mnuSaveDatabaseAs.Enabled = false;
+      this.mnuSaveDatabaseAs.Image = global::Bazga.Properties.Resources.Save_Image;
       this.mnuSaveDatabaseAs.Name = "mnuSaveDatabaseAs";
       this.mnuSaveDatabaseAs.Size = new System.Drawing.Size(142, 22);
       this.mnuSaveDatabaseAs.Text = "Spremi kao...";
@@ -213,6 +219,27 @@
       this.pnlDatabase.Name = "pnlDatabase";
       this.pnlDatabase.Size = new System.Drawing.Size(1094, 544);
       this.pnlDatabase.TabIndex = 2;
+      // 
+      // grpMan
+      // 
+      this.grpMan.Controls.Add(this.ctlPersonDetails1);
+      this.grpMan.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.grpMan.Location = new System.Drawing.Point(432, 24);
+      this.grpMan.Name = "grpMan";
+      this.grpMan.Size = new System.Drawing.Size(662, 368);
+      this.grpMan.TabIndex = 2;
+      this.grpMan.TabStop = false;
+      this.grpMan.Text = "Čovjek";
+      // 
+      // grpLinks
+      // 
+      this.grpLinks.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.grpLinks.Location = new System.Drawing.Point(432, 392);
+      this.grpLinks.Name = "grpLinks";
+      this.grpLinks.Size = new System.Drawing.Size(662, 152);
+      this.grpLinks.TabIndex = 3;
+      this.grpLinks.TabStop = false;
+      this.grpLinks.Text = "Linkovi";
       // 
       // lblDatabasePath
       // 
@@ -244,27 +271,6 @@
       this.mnuExitTray.Size = new System.Drawing.Size(96, 22);
       this.mnuExitTray.Text = "Izlaz";
       this.mnuExitTray.Click += new System.EventHandler(this.mnuExitTray_Click);
-      // 
-      // grpMan
-      // 
-      this.grpMan.Controls.Add(this.ctlPersonDetails1);
-      this.grpMan.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grpMan.Location = new System.Drawing.Point(432, 24);
-      this.grpMan.Name = "grpMan";
-      this.grpMan.Size = new System.Drawing.Size(662, 368);
-      this.grpMan.TabIndex = 2;
-      this.grpMan.TabStop = false;
-      this.grpMan.Text = "Čovjek";
-      // 
-      // grpLinks
-      // 
-      this.grpLinks.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.grpLinks.Location = new System.Drawing.Point(432, 392);
-      this.grpLinks.Name = "grpLinks";
-      this.grpLinks.Size = new System.Drawing.Size(662, 152);
-      this.grpLinks.TabIndex = 3;
-      this.grpLinks.TabStop = false;
-      this.grpLinks.Text = "Linkovi";
       // 
       // ctlPersonDetails1
       // 
@@ -322,7 +328,6 @@
       this.ctlPerson7.Name = "ctlPerson7";
       this.ctlPerson7.Size = new System.Drawing.Size(422, 22);
       this.ctlPerson7.TabIndex = 6;
-      this.ctlPerson7.Load += new System.EventHandler(this.ctlPerson7_Load);
       // 
       // ctlPerson6
       // 
@@ -331,7 +336,6 @@
       this.ctlPerson6.Name = "ctlPerson6";
       this.ctlPerson6.Size = new System.Drawing.Size(422, 22);
       this.ctlPerson6.TabIndex = 5;
-      this.ctlPerson6.Load += new System.EventHandler(this.ctlPerson6_Load);
       // 
       // ctlPerson5
       // 
@@ -396,8 +400,8 @@
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       this.pnlDatabase.ResumeLayout(false);
-      this.trayMenuStrip.ResumeLayout(false);
       this.grpMan.ResumeLayout(false);
+      this.trayMenuStrip.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 

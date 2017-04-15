@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Add_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_Image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BazgaGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BazgaGreen.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -126,5 +129,20 @@
   </data>
   <data name="BazgaYellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BazgaYellow.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete_Image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Edit_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Edit_Image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="New_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\New_Image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Open_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Open_Image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save_Image.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

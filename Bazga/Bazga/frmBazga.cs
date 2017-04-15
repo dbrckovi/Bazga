@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -11,11 +12,90 @@ namespace Bazga
 {
   public partial class frmBazga : Form
   {
-    private Database CurrentDatabase = null;
+    private Database _currentDatabase = null;
+    private Database CurrentDatabase
+    {
+      get { return _currentDatabase; }
+      set
+      {
+        mnuSaveDatabase.Enabled = mnuSaveDatabaseAs.Enabled = pnlDatabase.Enabled = value != null;
+        _currentDatabase = value;
+        LoadGUI();
+      }
+    }
 
     public frmBazga()
     {
       InitializeComponent();
+    }
+
+    private void NewDatabase()
+    {
+      if (!CheckChanged()) return;
+      CurrentDatabase = new Database();
+    }
+
+    private void OpenDatabase()
+    {
+      if (!CheckChanged()) return;
+
+      OpenFileDialog dlg = new OpenFileDialog();
+      dlg.Filter = Database.FILE_FILTER;
+      dlg.InitialDirectory = GetDatabaseInitialDirectory();
+      DialogResult res = dlg.ShowDialog(this);
+      if (res == DialogResult.OK)
+      {
+        CurrentDatabase = Database.Load(dlg.FileName);
+      }
+    }
+
+    private void SaveDatabase()
+    {
+      if (CurrentDatabase == null) throw new Exception("Baza nije otvorena");
+      if (string.IsNullOrEmpty(CurrentDatabase.Path)) SaveDatabaseAs();
+      else CurrentDatabase.Save();
+    }
+
+    private void SaveDatabaseAs()
+    {
+      SaveFileDialog dlg = new SaveFileDialog();
+      dlg.Filter = Database.FILE_FILTER;
+      dlg.InitialDirectory = GetDatabaseInitialDirectory();
+      DialogResult res = dlg.ShowDialog(this);
+      if (res == DialogResult.OK)
+      {
+        CurrentDatabase.Path = dlg.FileName;
+        CurrentDatabase.Save();
+      }
+    }
+
+    private bool CheckChanged()
+    {
+      if (CurrentDatabase != null && CurrentDatabase.Changed)
+      {
+        DialogResult dlgRes = MsgBox.Show(this, "Trenutno otvorena baza nije spremljena. Spremiti sad?", "Pažnja", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+        if (dlgRes == DialogResult.Cancel) return false;
+        else if (dlgRes == DialogResult.No) return true;
+        else
+        {
+          SaveDatabase();
+          return true;
+        }
+      }
+
+      return true;
+    }
+
+    private void LoadGUI()
+    {
+      lblDatabasePath.Text = CurrentDatabase != null && !string.IsNullOrEmpty(CurrentDatabase.Path) ? CurrentDatabase.Path : "";
+    }
+
+    private string GetDatabaseInitialDirectory()
+    {
+      string ret = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+      if (!string.IsNullOrEmpty(Settings.Instance.LastAccessedDatabasePath)) ret = Path.GetDirectoryName(Settings.Instance.LastAccessedDatabasePath);
+      return ret;
     }
 
     private void Form1_Load(object sender, EventArgs e)
@@ -59,6 +139,21 @@ namespace Bazga
     private void frmBazga_Shown(object sender, EventArgs e)
     {
       if (Settings.Instance.HideOnStartup) this.Hide();
+
+      if (!string.IsNullOrEmpty(Settings.Instance.LastAccessedDatabasePath))
+      {
+        try
+        {
+          CurrentDatabase = Database.Load(Settings.Instance.LastAccessedDatabasePath);
+        }
+        catch (Exception ex)
+        {
+          Settings.Instance.LastAccessedDatabasePath = null;
+          Settings.Save();
+          this.Show();
+          MsgBox.Show(this, string.Format("Greška kod otvaranja prošle baze\r\n{0}", ex.Message), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+      }
     }
 
     private void frmBazga_FormClosing(object sender, FormClosingEventArgs e)
@@ -83,6 +178,55 @@ namespace Bazga
     {
       frmSettings frm = new frmSettings();
       frm.ShowDialog(this);
+    }
+
+    private void mnuNewDatabase_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        NewDatabase();
+      }
+      catch (Exception ex)
+      {
+        MsgBox.Show(ex);
+      }
+    }
+
+    private void mnuOpenDatabase_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        OpenDatabase();
+      }
+      catch (Exception ex)
+      {
+        MsgBox.Show(ex);
+      }
+    }
+
+    private void mnuSaveDatabase_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        SaveDatabase();
+      }
+      catch (Exception ex)
+      {
+        MsgBox.Show(ex);
+      }
+    }
+
+    private void mnuSaveDatabaseAs_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        SaveDatabaseAs();
+        LoadGUI();
+      }
+      catch (Exception ex)
+      {
+        MsgBox.Show(ex);
+      }
     }
   }
 }

@@ -12,5 +12,6 @@ namespace Bazga
     public int Change;
     public int OldBalance;
     public int NewBalance;
+    public string Description;
   }
 }

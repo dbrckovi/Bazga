@@ -10,11 +10,11 @@ namespace Bazga
 {
   public class Settings
   {
-    public string DefaultDatabasePath;
     public int TransactionLifetimeDays = 30;
     public Size? LastFormSize;
     public Point? LastFormLocation;
     public bool HideOnStartup = false;
+    public string LastAccessedDatabasePath;
 
     #region Instance
     private static Settings _instance;

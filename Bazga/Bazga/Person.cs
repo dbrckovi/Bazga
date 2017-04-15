@@ -11,5 +11,7 @@ namespace Bazga
     public string Name;
     public bool Active;
     public int Balance;
+
+    public List<Transaction> Transactions = new List<Transaction>();
   }
 }

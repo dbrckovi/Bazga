@@ -144,6 +144,12 @@ namespace Bazga
       }
     }
 
+    public void NotifyLinksChanged()
+    {
+      OnLinksChanged();
+      Changed = true;
+    }
+
     /// <summary>
     /// Returns person with specified ID. Or null
     /// </summary>

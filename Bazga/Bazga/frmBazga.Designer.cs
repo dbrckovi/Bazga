@@ -53,7 +53,7 @@
       this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
       this.trayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.mnuExitTray = new System.Windows.Forms.ToolStripMenuItem();
-      this.panel3 = new System.Windows.Forms.Panel();
+      this.ctlLinks1 = new Bazga.ctlLinks();
       this.grpPeople.SuspendLayout();
       this.panel1.SuspendLayout();
       this.menuStrip1.SuspendLayout();
@@ -228,7 +228,7 @@
       // 
       // grpLinks
       // 
-      this.grpLinks.Controls.Add(this.panel3);
+      this.grpLinks.Controls.Add(this.ctlLinks1);
       this.grpLinks.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.grpLinks.Location = new System.Drawing.Point(432, 512);
       this.grpLinks.Name = "grpLinks";
@@ -303,12 +303,14 @@
       this.mnuExitTray.Text = "Izlaz";
       this.mnuExitTray.Click += new System.EventHandler(this.mnuExitTray_Click);
       // 
-      // panel3
+      // ctlLinks1
       // 
-      this.panel3.Location = new System.Drawing.Point(72, 40);
-      this.panel3.Name = "panel3";
-      this.panel3.Size = new System.Drawing.Size(120, 72);
-      this.panel3.TabIndex = 0;
+      this.ctlLinks1.Database = null;
+      this.ctlLinks1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ctlLinks1.Location = new System.Drawing.Point(3, 16);
+      this.ctlLinks1.Name = "ctlLinks1";
+      this.ctlLinks1.Size = new System.Drawing.Size(724, 119);
+      this.ctlLinks1.TabIndex = 0;
       // 
       // frmBazga
       // 
@@ -367,7 +369,7 @@
     private System.Windows.Forms.Panel panel2;
     private System.Windows.Forms.Button btnSave;
     private System.Windows.Forms.Label lblNotSaved;
-    private System.Windows.Forms.Panel panel3;
+    private ctlLinks ctlLinks1;
   }
 }
 

@@ -27,18 +27,26 @@ namespace Bazga
           _currentDatabase.DataChanged -= _currentDatabase_DataChanged;
           _currentDatabase.PersonAdded -= _currentDatabase_PersonAdded;
           _currentDatabase.PersonChanged -= _currentDatabase_PersonChanged;
+          _currentDatabase.LinksChanged -= _currentDatabase_LinksChanged;
         }
 
         mnuSaveDatabase.Enabled = mnuSaveDatabaseAs.Enabled = pnlDatabase.Enabled = value != null;
         _currentDatabase = value;
         ctlPersonDetails1.Database = _currentDatabase;
         ctlPersonList1.Database = _currentDatabase;
+        ctlLinks1.Database = _currentDatabase;
         LoadGUI();
 
         _currentDatabase.DataChanged += _currentDatabase_DataChanged;
         _currentDatabase.PersonAdded += _currentDatabase_PersonAdded;
         _currentDatabase.PersonChanged += _currentDatabase_PersonChanged;
+        _currentDatabase.LinksChanged += _currentDatabase_LinksChanged;
       }
+    }
+
+    private void _currentDatabase_LinksChanged()
+    {
+      ctlLinks1.RefreshGUI();
     }
 
     private void _currentDatabase_PersonChanged(int value)

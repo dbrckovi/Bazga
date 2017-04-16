@@ -30,6 +30,7 @@
     {
       this.components = new System.ComponentModel.Container();
       this.grpPeople = new System.Windows.Forms.GroupBox();
+      this.ctlPersonList1 = new Bazga.ctlPersonList();
       this.panel1 = new System.Windows.Forms.Panel();
       this.btnEditPerson = new System.Windows.Forms.Button();
       this.btnNewPerson = new System.Windows.Forms.Button();
@@ -42,23 +43,24 @@
       this.mnuSaveDatabaseAs = new System.Windows.Forms.ToolStripMenuItem();
       this.mnuSettings = new System.Windows.Forms.ToolStripMenuItem();
       this.pnlDatabase = new System.Windows.Forms.Panel();
+      this.grpMan = new System.Windows.Forms.GroupBox();
+      this.ctlPersonDetails1 = new Bazga.ctlPersonDetails();
+      this.grpLinks = new System.Windows.Forms.GroupBox();
       this.panel2 = new System.Windows.Forms.Panel();
       this.lblDatabasePath = new System.Windows.Forms.Label();
+      this.lblNotSaved = new System.Windows.Forms.Label();
       this.btnSave = new System.Windows.Forms.Button();
-      this.grpMan = new System.Windows.Forms.GroupBox();
-      this.grpLinks = new System.Windows.Forms.GroupBox();
       this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
       this.trayMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.mnuExitTray = new System.Windows.Forms.ToolStripMenuItem();
-      this.lblNotSaved = new System.Windows.Forms.Label();
-      this.ctlPersonDetails1 = new Bazga.ctlPersonDetails();
-      this.ctlPersonList1 = new Bazga.ctlPersonList();
+      this.panel3 = new System.Windows.Forms.Panel();
       this.grpPeople.SuspendLayout();
       this.panel1.SuspendLayout();
       this.menuStrip1.SuspendLayout();
       this.pnlDatabase.SuspendLayout();
-      this.panel2.SuspendLayout();
       this.grpMan.SuspendLayout();
+      this.grpLinks.SuspendLayout();
+      this.panel2.SuspendLayout();
       this.trayMenuStrip.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -69,10 +71,23 @@
       this.grpPeople.Dock = System.Windows.Forms.DockStyle.Left;
       this.grpPeople.Location = new System.Drawing.Point(0, 24);
       this.grpPeople.Name = "grpPeople";
-      this.grpPeople.Size = new System.Drawing.Size(432, 556);
+      this.grpPeople.Size = new System.Drawing.Size(432, 626);
       this.grpPeople.TabIndex = 0;
       this.grpPeople.TabStop = false;
       this.grpPeople.Text = "Ljudi";
+      // 
+      // ctlPersonList1
+      // 
+      this.ctlPersonList1.ActiveFilter = true;
+      this.ctlPersonList1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.ctlPersonList1.Database = null;
+      this.ctlPersonList1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ctlPersonList1.Location = new System.Drawing.Point(3, 44);
+      this.ctlPersonList1.Name = "ctlPersonList1";
+      this.ctlPersonList1.SelectedPersonID = null;
+      this.ctlPersonList1.Size = new System.Drawing.Size(426, 579);
+      this.ctlPersonList1.TabIndex = 1;
+      this.ctlPersonList1.SelectionChanged += new Bazga.Delegates.VoidDelegate(this.ctlPersonList1_SelectionChanged);
       // 
       // panel1
       // 
@@ -187,8 +202,40 @@
       this.pnlDatabase.Enabled = false;
       this.pnlDatabase.Location = new System.Drawing.Point(0, 24);
       this.pnlDatabase.Name = "pnlDatabase";
-      this.pnlDatabase.Size = new System.Drawing.Size(1162, 580);
+      this.pnlDatabase.Size = new System.Drawing.Size(1162, 650);
       this.pnlDatabase.TabIndex = 2;
+      // 
+      // grpMan
+      // 
+      this.grpMan.Controls.Add(this.ctlPersonDetails1);
+      this.grpMan.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.grpMan.Location = new System.Drawing.Point(432, 24);
+      this.grpMan.Name = "grpMan";
+      this.grpMan.Size = new System.Drawing.Size(730, 488);
+      this.grpMan.TabIndex = 2;
+      this.grpMan.TabStop = false;
+      this.grpMan.Text = "Čovjek";
+      // 
+      // ctlPersonDetails1
+      // 
+      this.ctlPersonDetails1.Database = null;
+      this.ctlPersonDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ctlPersonDetails1.Location = new System.Drawing.Point(3, 16);
+      this.ctlPersonDetails1.Name = "ctlPersonDetails1";
+      this.ctlPersonDetails1.PersonID = null;
+      this.ctlPersonDetails1.Size = new System.Drawing.Size(724, 469);
+      this.ctlPersonDetails1.TabIndex = 0;
+      // 
+      // grpLinks
+      // 
+      this.grpLinks.Controls.Add(this.panel3);
+      this.grpLinks.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.grpLinks.Location = new System.Drawing.Point(432, 512);
+      this.grpLinks.Name = "grpLinks";
+      this.grpLinks.Size = new System.Drawing.Size(730, 138);
+      this.grpLinks.TabIndex = 3;
+      this.grpLinks.TabStop = false;
+      this.grpLinks.Text = "Linkovi";
       // 
       // panel2
       // 
@@ -211,6 +258,19 @@
       this.lblDatabasePath.TabIndex = 1;
       this.lblDatabasePath.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
+      // lblNotSaved
+      // 
+      this.lblNotSaved.Dock = System.Windows.Forms.DockStyle.Right;
+      this.lblNotSaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+      this.lblNotSaved.ForeColor = System.Drawing.Color.Red;
+      this.lblNotSaved.Location = new System.Drawing.Point(940, 0);
+      this.lblNotSaved.Name = "lblNotSaved";
+      this.lblNotSaved.Size = new System.Drawing.Size(144, 24);
+      this.lblNotSaved.TabIndex = 3;
+      this.lblNotSaved.Text = "Nije Spremljeno";
+      this.lblNotSaved.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.lblNotSaved.Visible = false;
+      // 
       // btnSave
       // 
       this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
@@ -221,27 +281,6 @@
       this.btnSave.Text = "Spremi";
       this.btnSave.UseVisualStyleBackColor = true;
       this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-      // 
-      // grpMan
-      // 
-      this.grpMan.Controls.Add(this.ctlPersonDetails1);
-      this.grpMan.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.grpMan.Location = new System.Drawing.Point(432, 24);
-      this.grpMan.Name = "grpMan";
-      this.grpMan.Size = new System.Drawing.Size(730, 471);
-      this.grpMan.TabIndex = 2;
-      this.grpMan.TabStop = false;
-      this.grpMan.Text = "Čovjek";
-      // 
-      // grpLinks
-      // 
-      this.grpLinks.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.grpLinks.Location = new System.Drawing.Point(432, 495);
-      this.grpLinks.Name = "grpLinks";
-      this.grpLinks.Size = new System.Drawing.Size(730, 85);
-      this.grpLinks.TabIndex = 3;
-      this.grpLinks.TabStop = false;
-      this.grpLinks.Text = "Linkovi";
       // 
       // trayIcon
       // 
@@ -264,47 +303,18 @@
       this.mnuExitTray.Text = "Izlaz";
       this.mnuExitTray.Click += new System.EventHandler(this.mnuExitTray_Click);
       // 
-      // lblNotSaved
+      // panel3
       // 
-      this.lblNotSaved.Dock = System.Windows.Forms.DockStyle.Right;
-      this.lblNotSaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-      this.lblNotSaved.ForeColor = System.Drawing.Color.Red;
-      this.lblNotSaved.Location = new System.Drawing.Point(940, 0);
-      this.lblNotSaved.Name = "lblNotSaved";
-      this.lblNotSaved.Size = new System.Drawing.Size(144, 24);
-      this.lblNotSaved.TabIndex = 3;
-      this.lblNotSaved.Text = "Nije Spremljeno";
-      this.lblNotSaved.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.lblNotSaved.Visible = false;
-      // 
-      // ctlPersonDetails1
-      // 
-      this.ctlPersonDetails1.Database = null;
-      this.ctlPersonDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ctlPersonDetails1.Location = new System.Drawing.Point(3, 16);
-      this.ctlPersonDetails1.Name = "ctlPersonDetails1";
-      this.ctlPersonDetails1.PersonID = null;
-      this.ctlPersonDetails1.Size = new System.Drawing.Size(724, 452);
-      this.ctlPersonDetails1.TabIndex = 0;
-      // 
-      // ctlPersonList1
-      // 
-      this.ctlPersonList1.ActiveFilter = true;
-      this.ctlPersonList1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.ctlPersonList1.Database = null;
-      this.ctlPersonList1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ctlPersonList1.Location = new System.Drawing.Point(3, 44);
-      this.ctlPersonList1.Name = "ctlPersonList1";
-      this.ctlPersonList1.SelectedPersonID = null;
-      this.ctlPersonList1.Size = new System.Drawing.Size(426, 509);
-      this.ctlPersonList1.TabIndex = 1;
-      this.ctlPersonList1.SelectionChanged += new Bazga.Delegates.VoidDelegate(this.ctlPersonList1_SelectionChanged);
+      this.panel3.Location = new System.Drawing.Point(72, 40);
+      this.panel3.Name = "panel3";
+      this.panel3.Size = new System.Drawing.Size(120, 72);
+      this.panel3.TabIndex = 0;
       // 
       // frmBazga
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1162, 604);
+      this.ClientSize = new System.Drawing.Size(1162, 674);
       this.Controls.Add(this.pnlDatabase);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
@@ -322,8 +332,9 @@
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       this.pnlDatabase.ResumeLayout(false);
-      this.panel2.ResumeLayout(false);
       this.grpMan.ResumeLayout(false);
+      this.grpLinks.ResumeLayout(false);
+      this.panel2.ResumeLayout(false);
       this.trayMenuStrip.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
@@ -356,6 +367,7 @@
     private System.Windows.Forms.Panel panel2;
     private System.Windows.Forms.Button btnSave;
     private System.Windows.Forms.Label lblNotSaved;
+    private System.Windows.Forms.Panel panel3;
   }
 }
 

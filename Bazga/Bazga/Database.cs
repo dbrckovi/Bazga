@@ -17,7 +17,8 @@ namespace Bazga
     public string Path;
     public string Password;
     public List<Person> Persons = new List<Person>();
-
+    public List<Link> Links = new List<Link>();
+    
     public bool Changed
     {
       get
@@ -50,6 +51,12 @@ namespace Bazga
     private void OnPersonChanged(int id)
     {
       if (PersonChanged != null) PersonChanged(id);
+    }
+
+    public event Delegates.VoidDelegate LinksChanged;
+    private void OnLinksChanged()
+    {
+      if (LinksChanged != null) LinksChanged();
     }
 
     /// <summary>
@@ -110,6 +117,31 @@ namespace Bazga
 
       OnPersonChanged(id);
       Changed = true;
+    }
+
+    /// <summary>
+    /// Saves link and raises events. Needs to be called even if the change is made on the actual object which is already in the list
+    /// </summary>
+    /// <param name="link"></param>
+    public void SaveLink(Link link)
+    {
+      if (!Links.Contains(link))
+      {
+        Links.Add(link);
+      }
+
+      OnLinksChanged();
+      Changed = true;
+    }
+
+    public void RemoveLink(Link link)
+    {
+      if (Links.Contains(link))
+      {
+        Links.Remove(link);
+        OnLinksChanged();
+        Changed = true;
+      }
     }
 
     /// <summary>

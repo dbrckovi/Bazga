@@ -84,6 +84,7 @@
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Link.cs" />
     <Compile Include="MsgBox.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
